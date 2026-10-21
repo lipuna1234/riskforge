@@ -147,10 +147,10 @@ Default backtest assumptions are intentionally conservative in spirit but still 
 - Entry and exit fees are charged against traded notional.
 - One position at a time.
 - Position allocation is capped.
-- Stop-loss and take-profit are evaluated against candle high/low. If a candle touches both levels, the simulator assumes the stop-loss triggers first because intrabar ordering is unknown.
+- Stop-loss and take-profit are evaluated against candle OHLC. If a candle opens beyond a stop or target, the simulator uses the open as an approximate gap fill; if both levels are touched inside a candle, the stop-loss triggers first because intrabar ordering is unknown.
 - Signals are generated from candle closes and acted on at the next candle open to avoid same-candle look-ahead.
 - Gap risk and slippage are not fully modeled; add realistic slippage assumptions before interpreting results.
-- Daily loss limits are risk-management helpers, not protection from gaps or software/exchange failure.
+- The daily loss guard blocks new entries after observed equity reaches its configured daily threshold; it cannot guarantee a maximum loss because of gaps, open positions, candle granularity, or software/data failures.
 
 A risk limit cannot make a strategy safe or guarantee that losses remain within the chosen amount.
 
