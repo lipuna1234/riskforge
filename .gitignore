@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Reports and local data
+reports/
+data/private/
+*.log
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials.json
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
