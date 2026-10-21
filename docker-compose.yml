@@ -1,0 +1,9 @@
+services:
+  riskforge:
+    build:
+      context: .
+    image: riskforge:local
+    working_dir: /app
+    volumes:
+      - ./reports:/app/reports
+    command: ["python", "-m", "riskforge.cli", "backtest", "--data", "data/sample_btcusdt.csv", "--strategy", "ema"]
